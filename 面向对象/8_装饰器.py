@@ -29,3 +29,66 @@
 # @contextmanager: 用于定义上下文管理器，使其可以使用 with 语句来管理资源。
 # @wraps: 用于将一个函数的元信息（如名称、文档字符串、参数列表等）复制到一个装饰器函数中。
 
+
+'''property'''
+
+# property装饰器的使用可能较复杂一点，property的翻译就是属性，因此其跟属性有关啦。
+# 而装饰器又是用来装饰函数的，那其实加property装饰器的功能就是将函数的返回值作为类的属性啦。
+# 也就是说我们调用这个被装饰的函数不需要加括号去运行，而是直接像变量或者属性一样获取这个值。
+class Worker:
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        
+    @property
+    def name_and_salary(self):
+        return self.name+'的工资是'+str(self.salary)
+    # 需要有返回值，返回值作为获取到的属性嘛
+
+A = Worker('Jack',1000)
+print(A.name_and_salary)
+# 注意这里不用加括号哦，像变量或者属性一样去调用就好了
+
+# 当然property不止这点作用，使用property装饰后，被装饰的函数就成为了新的装饰器，
+# 新的装饰器常用的有三个，
+# 如上例中就是getter(默认的，即赋予类使用者获取某属性的能力)、
+#           setter(赋予类使用者在类外部给某类属性重新赋值的能力)和
+#           deleter(赋予类使用者在类外部删除某属性的能力)。
+class Worker:
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    @property     
+    # 先使用property装饰原函数，装饰之后就可以使用setter和deleter方法来进行装饰并有更多的功能了
+    # 这里默认已经有了getter的功能，也就是能够获取到这个属性的能力
+    def view_salary(self):
+        return self.salary
+
+    @view_salary.setter
+    # setter装饰器能够使我们在类外部重新设置view_salary这个属性
+    # 而没有setter的话就会报错  AttributeError: can't set attribute
+    def view_salary(self, new_salary):
+        self.salary = new_salary
+        return new_salary
+
+    @view_salary.deleter
+    # deleter装饰器的设置使我们可以在类外部使用del删除这个属性，但是这里我试了将self.salary
+    # 设置为其它值也是可以的哦，这个值设置非空的话还是会有属性继续存在的哦。也就是在类外部使用
+    # del的功能取决于你自己在这里设置的操作
+    # 我这里是设置为空值了
+    def view_salary(self):
+        self.salary = None
+
+A = Worker('J',1000)
+
+A.view_salary = 2000
+# 这里在外部进行赋值，是使用的设置的setter方法哦，没有setter会报错的！！
+print("使用setter后的view_salary 值是：", A.view_salary)
+
+del A.view_salary  # 尝试删除
+print("使用del后J 的view_salary 的属性值是：", A.view_salary)
+
+
