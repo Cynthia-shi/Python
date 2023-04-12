@@ -1,0 +1,136 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title>表单</title> 
+    </head>
+    <body> 
+        <form action="h2.html" mathod="post">
+            First name: <input type="text" name="firstname"><br><br>
+            Last name:  <input type="text" name="lastname"><br><br>
+            密码:        <input type="password" name="upass1"><br><br>
+            确认密码:    <input type="password" name="upass2"><br><br>
+            <input type="submit" value="提交">
+        </form>
+    </body>
+    <body>
+        <font color="red" face="" size="5">
+            <p style="text-align: center;">用户注册表单</p>     /*标题*/
+        </font>
+        <hr color="black" width="1000" size="2">       /*水平分割线*/
+        <form action="#" method="GET">                 /*后端服务器*/
+        <table style="text-align: center;">            /*创建一个表格,将内容设置为居中*/
+            <tr>
+                <td>
+                    <label>用户名：</label>
+                </td>
+                <td style="text-align: left;" width="500">
+                    <input type="text" placeholder="请输入用户名">
+                </td>
+                <td>
+                    <font color="red" size="1">用户名长度为4-16个字符</font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>密&nbsp;&nbsp;&nbsp;码：</label>
+                </td>
+                <td style="text-align: left;">
+                    <input type="password" placeholder="请输入密码">
+                </td>
+                <td>
+                    <font color="red" size="1">密码长度为6个字符</font>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" width="400">
+                    <label>确认密码：</label>
+                </td>
+                <td style="text-align: left;">
+                    <input type="password" placeholder="请确认密码">
+                </td>
+                <td>
+                    <font color="red" size="1">重复密码</font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>性别：</label>
+                </td>
+                <td style="text-align: left;">
+                    <input type="radio" name="sex" id="r1" value="1" checked>  /*单选按钮*/
+                    <label for="r1">男</label>
+                    <input type="radio" name="sex" id="r2" value="0">
+                    <label for="r2">女</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label> 出生日期：</label>
+                </td>
+                <td style="text-align: left;">
+                    <input type="date">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>爱好：</label>
+                </td>
+                <td style="text-align: left;">
+                    <input type="checkbox" value="体育" id="ch1">    /*复选按钮*/
+                    <label for="ch1">游泳</label>
+                    <input type="checkbox" value="旅游" id="ch2">
+                    <label for="ch2">旅游</label>
+                    <input type="checkbox" value="音乐" id="ch3">
+                    <label for="ch3">音乐</label>
+                    <br><br>
+                    <input type="checkbox" value="影视" id="ch4">
+                    <label for="ch4">影视</label>
+                    <input type="checkbox" value="追星" id="ch5">
+                    <label for="ch5">追星</label>
+                    <input type="checkbox" value="写作" id="ch6">
+                    <label for="ch6">写作</label>
+                </td>
+                <td>
+                    <font color="red" size="1">至少选择三项</font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>个人介绍：</label>
+                </td>
+                <td style="text-align: left;">
+                    <textarea cols="20" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>验证码：</label>
+                </td>
+                <td style="text-align: left;">
+                    <input type="number" placeholder="请输入验证码">
+                    <label>791216</label>
+                </td>
+                <td>
+                    <font color="red" size="1">请输入验证码</font>
+                </td>
+            </tr>
+            <tr rowspan="3" style="text-align: right;">
+                <td >
+                    <input type="file">
+                </td>
+            </tr>
+        </table>
+        <hr color="black" width="1000" size="2">
+        <table>
+            <tr rowspan="3" style="text-align: right;">  /*此处rowspan是使单元格跨行*/
+                <td width="1100">
+                <input type="submit" value="确认">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="reset" value="重置">
+                </td>
+            </tr>
+        </table>
+        </form>
+    </body>
+</HTML>
